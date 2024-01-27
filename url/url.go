@@ -8,6 +8,7 @@ import (
 func Web(page *fiber.App) {
 	page.Get("/", controller.Home)
 	page.Get("/catatan", controller.GetAllCatatan)
+	page.Get("/catatans/:username", controller.GetCatatanByUsername)
 	page.Post("/insertcatatan", controller.InsertCatatan)
 	page.Put("/editcatatan/:id", controller.UpdateCatatan)
 	page.Put("/setstatus/:id", controller.UpdateStatus)

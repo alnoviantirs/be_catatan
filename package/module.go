@@ -35,6 +35,22 @@ func InsertCatatan(db *mongo.Database, col string, catatan Catatan) (insertedID 
 	return insertedID, nil
 }
 
+func GetCatatanByUsername(db *mongo.Database, col string, user string) (data []Catatan) {
+	catat := db.Collection(col)
+	filter := bson.M{"user": user}
+	cursor, err := catat.Find(context.TODO(), filter)
+	if err != nil {
+		fmt.Println("GetCatatanByUsername:", err)
+		return nil
+	}
+	err = cursor.All(context.TODO(), &data)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	return data
+}
+
 func GetLastCatatan(db *mongo.Database, col string) (lastCatatan Catatan, err error) {
 	// Membuat filter untuk mendapatkan data terakhir
 	filter := bson.M{}
