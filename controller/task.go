@@ -82,6 +82,7 @@ func InsertCatatan(c *fiber.Ctx) error {
 		CreatedAt:   kontak.CreatedAt,
 		UpdatedAt:   kontak.UpdatedAt,
 		Color:       kontak.Color,
+		User:       kontak.User,
 	}
 
 	insertedID, err := inimodel.InsertCatatan(db, "catatan", catatan)

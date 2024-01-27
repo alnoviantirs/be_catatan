@@ -92,6 +92,7 @@ func UpdateCatatan(db *mongo.Database, col string, id int, updatedCatatan Catata
 			"createdAt":   updatedCatatan.CreatedAt,
 			"updatedAt":   updatedCatatan.UpdatedAt,
 			"color":       updatedCatatan.Color,
+			"user":       updatedCatatan.User,
 		},
 	}
 	fmt.Printf("Filter: %v\n", filter)
