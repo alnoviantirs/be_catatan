@@ -25,6 +25,24 @@ func GetAllCatatan(c *fiber.Ctx) error {
 	})
 }
 
+
+func GetCatatanByUsername(c *fiber.Ctx) error {
+	username := c.Params("username")
+	if username == "" {
+		return c.Status(http.StatusBadRequest).JSON(fiber.Map{
+			"status":  http.StatusBadRequest,
+			"message": "Username is required",
+		})
+	}
+
+	catatanByUsername := inimodel.GetCatatanByUsername(config.Ulbimongoconn, "catatan", username)
+	return c.JSON(fiber.Map{
+		"status": http.StatusOK,
+		"data":   catatanByUsername,
+	})
+}
+
+
 func InsertCatatan(c *fiber.Ctx) error {
 	db := config.Ulbimongoconn
 	var kontak inimodel.Catatan

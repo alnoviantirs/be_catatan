@@ -17,4 +17,5 @@ type Catatan struct {
 	CreatedAt   string             `bson:"createdAt,omitempty" json:"createdAt,omitempty"`
 	UpdatedAt   string             `bson:"updatedAt,omitempty" json:"updatedAt,omitempty"`
 	Color       *int               `bson:"color,omitempty" json:"color,omitempty"`
+	User				string          	 `bson:"user,omitempty" json:"user,omitempty"`
 }
